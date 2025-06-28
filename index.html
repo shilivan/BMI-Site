@@ -127,78 +127,94 @@
   </div>
 
   <script>
-    function updateForm() {
-      const unit = document.getElementById("unitSystem").value;
-      document.getElementById("metricInputs").style.display = unit === "metric" ? "block" : "none";
-      document.getElementById("imperialInputs").style.display = unit === "imperial" ? "block" : "none";
-    }
+  function updateForm() {
+    const unit = document.getElementById("unitSystem").value;
+    document.getElementById("metricInputs").style.display = unit === "metric" ? "block" : "none";
+    document.getElementById("imperialInputs").style.display = unit === "imperial" ? "block" : "none";
+  }
 
-    function calculateBMI() {
-      const unit = document.getElementById("unitSystem").value;
-      let height, weight;
+  function calculateBMI() {
+    const unit = document.getElementById("unitSystem").value;
+    let height, weight;
 
-      if (unit === "metric") {
-        height = parseFloat(document.getElementById("heightMetric").value);
-        weight = parseFloat(document.getElementById("weightMetric").value);
-        if (!height || !weight || height <= 0 || weight <= 0) {
-          displayResult("Please enter valid height and weight.");
-          return;
-        }
-        height = height / 100;
-      } else {
-        const feet = parseFloat(document.getElementById("feet").value);
-        const inches = parseFloat(document.getElementById("inches").value);
-        weight = parseFloat(document.getElementById("weightImperial").value);
-        if (isNaN(feet) || isNaN(inches) || isNaN(weight) || feet < 0 || inches < 0 || weight <= 0) {
-          displayResult("Please enter valid height and weight.");
-          return;
-        }
-        const totalInches = feet * 12 + inches;
-        height = totalInches * 0.0254;
-        weight = weight * 0.453592;
+    if (unit === "metric") {
+      height = parseFloat(document.getElementById("heightMetric").value);
+      weight = parseFloat(document.getElementById("weightMetric").value);
+      if (!height || !weight || height <= 0 || weight <= 0) {
+        displayResult("Please enter valid height and weight.");
+        return;
       }
-
-      const bmi = weight / (height ** 2);
-      const bmiRounded = bmi.toFixed(1);
-      let category = "";
-      let definition = "";
-
-      if (bmi < 18.5) {
-        category = "Underweight";
-        definition = "Below the healthy range. Consider consulting a healthcare provider.";
-      } else if (bmi < 25) {
-        category = "Healthy weight";
-        definition = "Generally associated with lower risk for chronic diseases.";
-      } else if (bmi < 30) {
-        category = "Overweight";
-        definition = "Increased risk for conditions like high blood pressure or diabetes.";
-      } else if (bmi < 35) {
-        category = "Obesity (Class I)";
-        definition = "May indicate significant health risks. Consider medical guidance.";
-      } else if (bmi < 40) {
-        category = "Obesity (Class II)";
-        definition = "High risk for chronic conditions. Strongly consider medical support.";
-      } else {
-        category = "Obesity (Class III)";
-        definition = "Severe obesity. It is important to consult a healthcare professional.";
+      height = height / 100;
+    } else {
+      const feet = parseFloat(document.getElementById("feet").value);
+      const inches = parseFloat(document.getElementById("inches").value);
+      weight = parseFloat(document.getElementById("weightImperial").value);
+      if (isNaN(feet) || isNaN(inches) || isNaN(weight) || feet < 0 || inches < 0 || weight <= 0) {
+        displayResult("Please enter valid height and weight.");
+        return;
       }
-
-      displayResult(`Your BMI is ${bmiRounded} — which is considered <strong>${category}</strong>.`, definition);
+      const totalInches = feet * 12 + inches;
+      height = totalInches * 0.0254;
+      weight = weight * 0.453592;
     }
 
-    function displayResult(message, definition = "") {
-      const resultBox = document.getElementById("result");
-      resultBox.innerHTML = message;
+    const bmi = weight / (height ** 2);
+    const bmiRounded = bmi.toFixed(1);
+    let category = "";
+    let definition = "";
+    let categoryKey = "";
 
-      const defBox = document.getElementById("definitionBox");
-      defBox.innerHTML = definition ? `<p>${definition}</p>` : "";
-      defBox.style.display = definition ? "block" : "none";
-
-      const supportLink = document.createElement("p");
-      supportLink.innerHTML = `<a href="herbal-support.html">🌿 Herbal Support for Your BMI Category</a>`;
-      resultBox.appendChild(supportLink);
+    if (bmi < 18.5) {
+      category = "Underweight";
+      definition = "Below the healthy range. Consider consulting a healthcare provider.";
+      categoryKey = "underweight";
+    } else if (bmi < 25) {
+      category = "Healthy weight";
+      definition = "Generally associated with lower risk for chronic diseases.";
+      categoryKey = "healthy";
+    } else if (bmi < 30) {
+      category = "Overweight";
+      definition = "Increased risk for conditions like high blood pressure or diabetes.";
+      categoryKey = "overweight";
+    } else if (bmi < 35) {
+      category = "Obesity (Class I)";
+      definition = "May indicate significant health risks. Consider medical guidance.";
+      categoryKey = "obesity1";
+    } else if (bmi < 40) {
+      category = "Obesity (Class II)";
+      definition = "High risk for chronic conditions. Strongly consider medical support.";
+      categoryKey = "obesity2";
+    } else {
+      category = "Obesity (Class III)";
+      definition = "Severe obesity. It is important to consult a healthcare professional.";
+      categoryKey = "obesity3";
     }
-  </script>
+
+    displayResult(`Your BMI is ${bmiRounded} — which is considered <strong>${category}</strong>.`, definition, categoryKey);
+  }
+
+  function displayResult(message, definition = "", categoryKey = "") {
+    const resultBox = document.getElementById("result");
+    resultBox.innerHTML = message;
+
+    const defBox = document.getElementById("definitionBox");
+    defBox.innerHTML = definition ? `<p>${definition}</p>` : "";
+    defBox.style.display = definition ? "block" : "none";
+
+    // Personalized herbal suggestion
+    const supportPara = document.createElement("p");
+    if (categoryKey) {
+      supportPara.innerHTML = `🌿 Personalized herbal support: <a href="herbal-support.html#${categoryKey}">Learn more for ${categoryKey.replace(/([A-Z])/g, ' $1').trim()}</a>.`;
+      resultBox.appendChild(supportPara);
+    }
+
+    // Full herbal guide link
+    const allPara = document.createElement("p");
+    allPara.innerHTML = `<a href="herbal-support.html">Explore full herbal guide for all categories</a>`;
+    resultBox.appendChild(allPara);
+  }
+</script>
+
 </body>
 </html>
 
