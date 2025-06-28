@@ -95,10 +95,10 @@
     </div>
 
     <div id="metricInputs">
-      <label for="heightMetric">Height (in cm):</label>
+      <label for="heightMetric">Height (cm):</label>
       <input type="number" id="heightMetric" placeholder="e.g. 170" />
 
-      <label for="weightMetric">Weight (in kg):</label>
+      <label for="weightMetric">Weight (kg):</label>
       <input type="number" id="weightMetric" placeholder="e.g. 65" />
     </div>
 
@@ -109,7 +109,7 @@
         <input type="number" id="inches" placeholder="Inches" />
       </div>
 
-      <label for="weightImperial">Weight (in lb):</label>
+      <label for="weightImperial">Weight (lb):</label>
       <input type="number" id="weightImperial" placeholder="e.g. 150" />
     </div>
 
@@ -117,7 +117,7 @@
     <div class="result" id="result"></div>
     <div class="definition" id="definitionBox"></div>
     <div class="disclaimer">
-      <p>This calculator is intended for adults age 20 and older. BMI for children and teens is assessed differently. For more, visit the <a href="https://www.cdc.gov/bmi/?CDC_AAref_Val=https://www.cdc.gov/healthyweight/assessing/bmi/index.html" target="_blank">CDC BMI info page</a>.</p>
+      <p>This calculator is intended for adults age 20 and older. BMI for children and teens is assessed differently. For more, visit the <a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html" target="_blank">CDC BMI info page</a>.</p>
     </div>
   </div>
 
@@ -144,7 +144,7 @@
           displayResult("Please enter valid height and weight.");
           return;
         }
-        height = height / 100; // convert cm to meters
+        height = height / 100;
       } else {
         const feet = parseFloat(document.getElementById("feet").value);
         const inches = parseFloat(document.getElementById("inches").value);
@@ -187,10 +187,16 @@
     }
 
     function displayResult(message, definition = "") {
-      document.getElementById("result").innerHTML = message;
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = message;
+
       const defBox = document.getElementById("definitionBox");
       defBox.innerHTML = definition ? `<p>${definition}</p>` : "";
       defBox.style.display = definition ? "block" : "none";
+
+      const supportLink = document.createElement("p");
+      supportLink.innerHTML = `<a href="herbal-support.html">🌿 Herbal Support for Your BMI Category</a>`;
+      resultBox.appendChild(supportLink);
     }
   </script>
 </body>
