@@ -11,17 +11,17 @@
       font-family: Arial, sans-serif;
       background-color: #f3f4f6;
       color: #333;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       padding: 2em;
     }
     h1 { color: #2a4d69; text-align: center; }
-    h2 { color: #3f88c5; margin-top: 1.5em; }
+    h2 { color: #3f88c5; margin-top: 2em; border-bottom: 1px solid #ddd; padding-bottom: 0.2em; }
     section {
       background: #fff;
       padding: 1.5em;
       border-radius: 8px;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     ul { margin-top: 0.5em; }
@@ -35,7 +35,12 @@
     a:hover { text-decoration: underline; }
     .back {
       text-align: center;
+      margin-top: 3em;
+    }
+    .bmc {
+      text-align: center;
       margin-top: 2em;
+      font-size: 0.95em;
     }
   </style>
 </head>
@@ -44,7 +49,73 @@
   <p>This guide offers Traditional Chinese Medicine herbal insight based on your BMI result. It aims to provide gentle, balanced support—not medical advice. Please consult a qualified practitioner before beginning any herbal regimen.</p>
   <p>For deeper insights into herbal medicine and personalized wellness strategies, visit <a href="https://www.3pillarsmedicine.com" target="_blank">3PillarsMedicine.com</a>.</p>
 
-  <!-- Existing herbal sections remain unchanged -->
+  <section id="underweight">
+    <h2>BMI &lt; 18.5 — Underweight</h2>
+    <p><strong>TCM Patterns:</strong> Blood Deficiency, Yin Deficiency<br><strong>Elemental Type:</strong> Wood / Fire</p>
+    <p><strong>Herbs:</strong></p>
+    <ul>
+      <li>當歸 (Dāng Guī) – nourishes blood</li>
+      <li>熟地黃 (Shú Dì Huáng) – tonifies blood and yin</li>
+      <li>白芍 (Bái Sháo) – nourishes blood, preserves yin</li>
+      <li>黃耆 (Huáng Qí) – strengthens Qi to support blood</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> beets, black sesame, dates, leafy greens, millet, oats, bone broth</p>
+    <p><strong>Contraindications:</strong> Avoid cold/raw and overly spicy foods</p>
+  </section>
+
+  <section id="healthy">
+    <h2>BMI 18.5–24.9 — Healthy</h2>
+    <p><strong>TCM Patterns:</strong> Balanced Qi and Blood<br><strong>Elemental Type:</strong> Earth</p>
+    <ul>
+      <li>山藥 (Shān Yào), 黨參 (Dǎng Shēn), 白朮 (Bái Zhú)</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> sweet potatoes, rice, barley, ginger, cooked vegetables</p>
+    <p><strong>Contraindications:</strong> Avoid greasy, rich, or overly processed foods</p>
+  </section>
+
+  <section id="overweight">
+    <h2>BMI 25–29.9 — Overweight</h2>
+    <p><strong>TCM Patterns:</strong> Dampness, Spleen Qi Deficiency<br><strong>Elemental Type:</strong> Earth / Metal</p>
+    <ul>
+      <li>茯苓 (Fú Líng), 陳皮 (Chén Pí), 白朮 (Bái Zhú), 藿香 (Huò Xiāng)</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> lentils, adzuki beans, pumpkin, barley, leeks, ginger tea</p>
+    <p><strong>Contraindications:</strong> Avoid sugar, dairy, cold/raw and flour-heavy foods</p>
+  </section>
+
+  <section id="obesity1">
+    <h2>BMI 30–34.9 — Obesity Class I</h2>
+    <p><strong>TCM Patterns:</strong> Damp-Phlegm, Qi Stagnation<br><strong>Elemental Type:</strong> Earth / Metal</p>
+    <ul>
+      <li>半夏 (Bàn Xià), 厚朴 (Hòu Pò), 枳實 (Zhǐ Shí), 陳皮 (Chén Pí)</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> daikon radish, mung beans, celery, green tea</p>
+    <p><strong>Contraindications:</strong> Avoid fried food, excess meat and cheese, cold/raw intake</p>
+  </section>
+
+  <section id="obesity2">
+    <h2>BMI 35–39.9 — Obesity Class II</h2>
+    <p><strong>TCM Patterns:</strong> Damp-Heat, Liver Qi Constraint<br><strong>Elemental Type:</strong> Wood / Earth</p>
+    <ul>
+      <li>黃連 (Huáng Lián), 柴胡 (Chái Hú), 茵陳蒿 (Yīn Chén Hāo), 澤瀉 (Zé Xiè)</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> bitter greens, cucumber, chrysanthemum tea, turmeric</p>
+    <p><strong>Contraindications:</strong> Avoid alcohol, spicy, greasy, and sugar-heavy foods</p>
+  </section>
+
+  <section id="obesity3">
+    <h2>BMI ≥ 40 — Obesity Class III</h2>
+    <p><strong>TCM Patterns:</strong> Phlegm-Fire, Toxic Heat, Spleen Collapse<br><strong>Elemental Type:</strong> Fire / Earth</p>
+    <ul>
+      <li>龍膽草 (Lóng Dǎn Cǎo), 黃芩 (Huáng Qín), 大黃 (Dà Huáng), 黨參 (Dǎng Shēn)</li>
+    </ul>
+    <p><strong>Supportive Foods:</strong> bitter melon, lotus root, wheatgrass, daikon, cabbage</p>
+    <p><strong>Contraindications:</strong> Avoid sugar, alcohol, processed foods, and fried meals</p>
+  </section>
+
+  <div class="bmc">
+    ☕ If you found this guide helpful, you can <a href="https://www.buymeacoffee.com/3pillarsmedicine" target="_blank">buy me a tea</a> to support free tools like this.
+  </div>
 
   <div class="back">
     <a href="index.html">&larr; Back to BMI Calculator</a>
