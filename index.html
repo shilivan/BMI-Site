@@ -118,11 +118,13 @@
     <div class="definition" id="definitionBox"></div>
     <div class="disclaimer">
       <p>This calculator is intended for adults age 20 and older. BMI for children and teens is assessed differently. For more, visit the <a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html" target="_blank">CDC BMI info page</a>.</p>
-    </div>
+    </div><div style="text-align:center; margin-top: 2em; font-size: 0.95em;">
+  ☕ If you found this guide helpful, you can <a href="https://www.buymeacoffee.com/3pillarsmedicine" target="_blank">buy me a tea</a> to support free tools like this.
+</div>
   </div>
 
   <div class="ad-space">
-    Advertisement goes here
+    space available
   </div>
 
   <script>
@@ -211,6 +213,10 @@
       const externalLink = document.createElement("p");
       externalLink.innerHTML = `<a href="https://www.3pillarsmedicine.com" target="_blank">🌿 Learn more about herbal support and techniques at 3PillarsMedicine.com</a>`;
       resultBox.appendChild(externalLink);
+
+      const bmcLink = document.createElement("p");
+      bmcLink.innerHTML = `☕ If this tool helped you, <a href="https://www.buymeacoffee.com/3pillarsmedicine" target="_blank">consider buying me a tea</a>. Your support keeps this free & ad-light.`;
+      resultBox.appendChild(bmcLink);
     }
   </script>
 </body>
