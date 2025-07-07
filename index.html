@@ -118,9 +118,10 @@
     <div class="definition" id="definitionBox"></div>
     <div class="disclaimer">
       <p>This calculator is intended for adults age 20 and older. BMI for children and teens is assessed differently. For more, visit the <a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html" target="_blank">CDC BMI info page</a>.</p>
-    </div><div style="text-align:center; margin-top: 2em; font-size: 0.95em;">
-  ☕ If you found this guide helpful, you can <a href="https://www.buymeacoffee.com/3pillarsmedicine" target="_blank">buy me a tea</a> to support free tools like this.
-</div>
+    </div>
+    <div style="text-align:center; margin-top: 2em; font-size: 0.95em;">
+      ☕ If you found this guide helpful, you can <a href="https://www.buymeacoffee.com/3pillarsmedicine" target="_blank">buy me a tea</a> to support free tools like this.
+    </div>
   </div>
 
   <div class="ad-space">
@@ -199,6 +200,21 @@
       const defBox = document.getElementById("definitionBox");
       defBox.innerHTML = definition ? `<p>${definition}</p>` : "";
       defBox.style.display = definition ? "block" : "none";
+
+      const elementalTypes = {
+        "underweight": "🌿 <strong>Elemental Type:</strong> Wood / Fire",
+        "healthy": "🌿 <strong>Elemental Type:</strong> Earth",
+        "overweight": "🌿 <strong>Elemental Type:</strong> Earth / Metal",
+        "obesity1": "🌿 <strong>Elemental Type:</strong> Earth / Metal",
+        "obesity2": "🌿 <strong>Elemental Type:</strong> Wood / Earth",
+        "obesity3": "🌿 <strong>Elemental Type:</strong> Fire / Earth"
+      };
+
+      if (categoryKey && elementalTypes[categoryKey]) {
+        const elementLine = document.createElement("p");
+        elementLine.innerHTML = elementalTypes[categoryKey];
+        resultBox.appendChild(elementLine);
+      }
 
       const supportPara = document.createElement("p");
       if (categoryKey) {
